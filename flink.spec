@@ -30,7 +30,7 @@ Apache Flink is a framework and distributed processing engine for stateful compu
 
 %build
 
-maven_cmd="clean package " 
+maven_cmd="clean package -Dskip.npm " 
 
 %if 0%{?compile_for_local}
  cp  %{SOURCE1} ./

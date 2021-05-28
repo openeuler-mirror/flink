@@ -1,0 +1,32 @@
+From a35c34c6591366ddaccc873b800b078fbd9cc9d7 Mon Sep 17 00:00:00 2001
+From: weidong <weidong@uniontech.com>
+Date: Thu, 17 Dec 2020 11:44:05 +0800
+Subject: [PATCH] add npm.hw repo
+
+---
+ flink-runtime-web/pom.xml | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/flink-runtime-web/pom.xml b/flink-runtime-web/pom.xml
+index 0d98526b..fb29809b 100644
+--- a/flink-runtime-web/pom.xml
++++ b/flink-runtime-web/pom.xml
+@@ -271,6 +271,7 @@ under the License.
+ 						</goals>
+ 						<configuration>
+ 							<arguments>ci --cache-max=0 --no-save</arguments>
++							<npmRegistryURL>https://mirrors.huaweicloud.com/repository/npm</npmRegistryURL>
+ 							<environmentVariables>
+ 								<HUSKY_SKIP_INSTALL>true</HUSKY_SKIP_INSTALL>
+ 							</environmentVariables>
+@@ -283,6 +284,7 @@ under the License.
+ 						</goals>
+ 						<configuration>
+ 							<arguments>run build</arguments>
++							<npmRegistryURL>https://mirrors.huaweicloud.com/repository/npm</npmRegistryURL>
+ 						</configuration>
+ 					</execution>
+ 				</executions>
+-- 
+2.23.0
+

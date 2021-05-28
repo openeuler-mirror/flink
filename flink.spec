@@ -11,12 +11,13 @@
 
 Name:           flink
 Version:        1.12.0
-Release:        2
+Release:        3
 Summary:        Stateful Computations over Data Streams
 License:        Apache License v2.0
 URL:            https://github.com/apache/%{name}
 Source0:        https://github.com/apache/%{name}/archive/release-%{version}.tar.gz
 Source1:        settings.xml
+Patch0:         0001-add-npm.hw-repo.patch
 
 BuildRequires:  java-1.8.0-openjdk-devel maven
 Requires:       java-1.8.0-openjdk
@@ -30,7 +31,7 @@ Apache Flink is a framework and distributed processing engine for stateful compu
 
 %build
 
-maven_cmd="clean package -Dskip.npm " 
+maven_cmd="clean package " 
 
 %if 0%{?compile_for_local}
  cp  %{SOURCE1} ./
@@ -59,6 +60,9 @@ find %{buildroot}/opt/apache-%{name}-%{version}/ -type f -name '*.py' | xargs -i
 %license LICENSE
 
 %changelog
+* Wed Dec 23 2020 weidong <weidong@uniontech.com> - 1.12.0-3
+- Add npm.huawei repo.
+
 * Thu Dec 17 2020 weidong <weidong@uniontech.com> - 1.12.0-2
 - Fix compilation issues.
 

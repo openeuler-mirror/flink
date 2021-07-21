@@ -1,0 +1,28 @@
+diff --git a/flink-end-to-end-tests/flink-end-to-end-tests-common-kafka/pom.xml b/flink-end-to-end-tests/flink-end-to-end-tests-common-kafka/pom.xml
+index 3843cd5..1064296 100644
+--- a/flink-end-to-end-tests/flink-end-to-end-tests-common-kafka/pom.xml
++++ b/flink-end-to-end-tests/flink-end-to-end-tests-common-kafka/pom.xml
+@@ -43,6 +43,11 @@ under the License.
+ 			<artifactId>flink-end-to-end-tests-common</artifactId>
+ 			<version>${project.version}</version>
+ 		</dependency>
++                <dependency>
++                    <groupId>io.confluent</groupId>
++                    <artifactId>kafka-schema-serializer</artifactId>
++                    <version>5.5.2</version>
++                </dependency>
+ 		<dependency>
+ 			<groupId>org.apache.flink</groupId>
+ 			<artifactId>flink-test-utils-junit</artifactId>
+diff --git a/flink-runtime-web/pom.xml b/flink-runtime-web/pom.xml
+index d94fca1..a9896f4 100644
+--- a/flink-runtime-web/pom.xml
++++ b/flink-runtime-web/pom.xml
+@@ -262,6 +262,7 @@ under the License.
+ 						</goals>
+ 						<configuration>
+ 							<nodeVersion>v10.9.0</nodeVersion>
++                                                        <downloadRoot>https://mirrors.huaweicloud.com/nodejs/</downloadRoot>
+ 						</configuration>
+ 					</execution>
+ 					<execution>

@@ -3,7 +3,7 @@
 %global debug_package %{nil}
 
 # Use local caches compile
-%global compile_for_local 1
+%global compile_for_local 0
 
 %global with_debug 0
 
@@ -11,14 +11,18 @@
 
 Name:           flink
 Version:        1.12.0
-Release:        3
+Release:        4
 Summary:        Stateful Computations over Data Streams
 License:        Apache License v2.0
 URL:            https://github.com/apache/%{name}
 Source0:        https://github.com/apache/%{name}/archive/release-%{version}.tar.gz
 Source1:        settings.xml
-Patch0:         0001-add-npm.hw-repo.patch
+Source2:        https://packages.confluent.io/maven/io/confluent/kafka-schema-registry-client/5.5.2/kafka-schema-registry-client-5.5.2.jar
+Source3:        https://packages.confluent.io/maven/io/confluent/kafka-avro-serializer/5.5.2/kafka-avro-serializer-5.5.2.jar
+Source4:        https://packages.confluent.io/maven/io/confluent/kafka-schema-serializer/5.5.2/kafka-schema-serializer-5.5.2.jar
 
+Patch0:         0001-add-npm.hw-repo.patch
+Patch1:         0002-fix-compilation-failure.patch
 BuildRequires:  java-1.8.0-openjdk-devel maven
 Requires:       java-1.8.0-openjdk
 
@@ -28,7 +32,9 @@ Apache Flink is a framework and distributed processing engine for stateful compu
 
 %prep
 %autosetup -p1 -n %{name}-release-%{version}
-
+mvn install:install-file -DgroupId=io.confluent -DartifactId=kafka-schema-registry-client -Dversion=5.5.2 -Dpackaging=jar -Dfile=%{SOURCE2}
+mvn install:install-file -DgroupId=io.confluent -DartifactId=kafka-avro-serializer -Dversion=5.5.2 -Dpackaging=jar -Dfile=%{SOURCE3}
+mvn install:install-file -DgroupId=io.confluent -DartifactId=kafka-schema-serializer -Dversion=5.5.2 -Dpackaging=jar -Dfile=%{SOURCE4}
 %build
 
 maven_cmd="clean package " 
@@ -60,6 +66,9 @@ find %{buildroot}/opt/apache-%{name}-%{version}/ -type f -name '*.py' | xargs -i
 %license LICENSE
 
 %changelog
+* Wed Jul 21 2021 zhangjiapeng <zhangjiapeng@huawei.com> - 1.12.0-4
+- Fix compilation failure.
+
 * Wed Dec 23 2020 weidong <weidong@uniontech.com> - 1.12.0-3
 - Add npm.huawei repo.
 

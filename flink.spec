@@ -10,8 +10,8 @@
 %global with_tests 0
 
 Name:           flink
-Version:        1.12.0
-Release:        4
+Version:        1.12.7
+Release:        1
 Summary:        Stateful Computations over Data Streams
 License:        Apache License v2.0
 URL:            https://github.com/apache/%{name}
@@ -66,6 +66,9 @@ find %{buildroot}/opt/apache-%{name}-%{version}/ -type f -name '*.py' | xargs -i
 %license LICENSE
 
 %changelog
+* Fri Dec 17 2021 weidong <weidong@uniontech.com> - 1.12.7-1
+- Update version.
+
 * Wed Jul 21 2021 zhangjiapeng <zhangjiapeng@huawei.com> - 1.12.0-4
 - Fix compilation failure.
 

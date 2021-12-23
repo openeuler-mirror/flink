@@ -10,12 +10,12 @@
 %global with_tests 0
 
 Name:           flink
-Version:        1.12.7
+Version:        1.13.0
 Release:        1
 Summary:        Stateful Computations over Data Streams
 License:        Apache License v2.0
 URL:            https://github.com/apache/%{name}
-Source0:        https://github.com/apache/%{name}/archive/release-%{version}.tar.gz
+Source0:        https://github.com/apache/%{name}/archive/flink-release-%{version}.tar.gz
 Source1:        settings.xml
 Source2:        https://packages.confluent.io/maven/io/confluent/kafka-schema-registry-client/5.5.2/kafka-schema-registry-client-5.5.2.jar
 Source3:        https://packages.confluent.io/maven/io/confluent/kafka-avro-serializer/5.5.2/kafka-avro-serializer-5.5.2.jar
@@ -65,7 +65,10 @@ find %{buildroot}/opt/apache-%{name}-%{version}/ -type f -name '*.py' | xargs -i
 %doc README.md
 %license LICENSE
 
-%changelog
+%changelog 
+* Fri Dec 22 2021 chenjunbiao<chenjunbiao@uniontech.com> - 1.13.0-1
+- Update version.
+
 * Fri Dec 17 2021 weidong <weidong@uniontech.com> - 1.12.7-1
 - Update version.
 

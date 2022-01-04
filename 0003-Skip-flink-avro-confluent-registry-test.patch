@@ -1,0 +1,25 @@
+From 2b17debeeef8845c9d0f347d028ea8e388f4222a Mon Sep 17 00:00:00 2001
+From: wei dong <weidong@uniontech.com>
+Date: Wed, 5 Jan 2022 14:20:49 +0800
+Subject: [PATCH] Skip flink-avro-confluent-registry test
+
+Signed-off-by: wei dong <weidong@uniontech.com>
+---
+ flink-formats/flink-avro-confluent-registry/pom.xml | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/flink-formats/flink-avro-confluent-registry/pom.xml b/flink-formats/flink-avro-confluent-registry/pom.xml
+index 9d412708..54710d4e 100644
+--- a/flink-formats/flink-avro-confluent-registry/pom.xml
++++ b/flink-formats/flink-avro-confluent-registry/pom.xml
+@@ -34,6 +34,7 @@ under the License.
+ 	<properties>
+ 		<kafka.version>2.4.1</kafka.version>
+ 		<confluent.version>5.5.2</confluent.version>
++		<maven.test.skip>true</maven.test.skip>
+ 	</properties>
+ 
+ 	<repositories>
+-- 
+2.27.0
+

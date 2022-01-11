@@ -11,7 +11,7 @@
 
 Name:           flink
 Version:        1.12.7
-Release:        1
+Release:        2
 Summary:        Stateful Computations over Data Streams
 License:        Apache License v2.0
 URL:            https://github.com/apache/%{name}
@@ -20,9 +20,11 @@ Source1:        settings.xml
 Source2:        https://packages.confluent.io/maven/io/confluent/kafka-schema-registry-client/5.5.2/kafka-schema-registry-client-5.5.2.jar
 Source3:        https://packages.confluent.io/maven/io/confluent/kafka-avro-serializer/5.5.2/kafka-avro-serializer-5.5.2.jar
 Source4:        https://packages.confluent.io/maven/io/confluent/kafka-schema-serializer/5.5.2/kafka-schema-serializer-5.5.2.jar
+Source5:	https://maven.aliyun.com/repository/public/io/confluent/kafka-clients/5.5.2-ccs/kafka-clients-5.5.2-ccs.jar
 
 Patch0:         0001-add-npm.hw-repo.patch
 Patch1:         0002-fix-compilation-failure.patch
+Patch2:		0003-Skip-flink-avro-confluent-registry-test.patch
 BuildRequires:  java-1.8.0-openjdk-devel maven
 Requires:       java-1.8.0-openjdk
 
@@ -35,6 +37,7 @@ Apache Flink is a framework and distributed processing engine for stateful compu
 mvn install:install-file -DgroupId=io.confluent -DartifactId=kafka-schema-registry-client -Dversion=5.5.2 -Dpackaging=jar -Dfile=%{SOURCE2}
 mvn install:install-file -DgroupId=io.confluent -DartifactId=kafka-avro-serializer -Dversion=5.5.2 -Dpackaging=jar -Dfile=%{SOURCE3}
 mvn install:install-file -DgroupId=io.confluent -DartifactId=kafka-schema-serializer -Dversion=5.5.2 -Dpackaging=jar -Dfile=%{SOURCE4}
+mvn install:install-file -DgroupId=org.apache.kafka -DartifactId=kafka-clients -Dversion=5.5.2-ccs -Dpackaging=jar -Dfile=%{SOURCE5}
 %build
 
 maven_cmd="clean package " 
@@ -66,6 +69,9 @@ find %{buildroot}/opt/apache-%{name}-%{version}/ -type f -name '*.py' | xargs -i
 %license LICENSE
 
 %changelog
+* Wed Jan 05 2022 weidong <weidong@uniontech.com> - 1.12.7-2
+- Fix compilation failure.
+
 * Fri Dec 17 2021 weidong <weidong@uniontech.com> - 1.12.7-1
 - Update version.
 

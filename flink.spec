@@ -66,7 +66,7 @@ find %{buildroot}/opt/apache-%{name}-%{version}/ -type f -name '*.py' | xargs -i
 %license LICENSE
 
 %changelog 
-* Fri Dec 22 2021 chenjunbiao<chenjunbiao@uniontech.com> - 1.13.0-1
+* Wed Dec 22 2021 chenjunbiao<chenjunbiao@uniontech.com> - 1.13.0-1
 - Update version.
 
 * Fri Dec 17 2021 weidong <weidong@uniontech.com> - 1.12.7-1

@@ -12,6 +12,12 @@ Flink的架构体系同样也遵行分层架构设计的理念，基本上分为
 - Runtime 核心层：负责对上层不同接口提供基础服务，支持分布式Stream作业的执行、JobGraph到ExecutionGraph 的映射转换、任务调度等，将DataStream和DataSet转成统一的可执行的Task Operator.
 - 物理部署层：Flink 支持多种部署模式，本机，集群（Standalone/YARN）、云（GCE/EC2）、Kubenetes。
 
+#### ARM支持：
+
+1. 移植指南：https://support.huaweicloud.com/prtg-apache-kunpengbds/kunpengflink191_02_0001.html
+2. 部署指南：https://support.huaweicloud.com/dpmg-apache-kunpengbds/kunpengflink_04_0001.html
+3. 调优指南：https://support.huaweicloud.com/tngg-kunpengbds/kunpengflinkhdp_05_0002.html
+
 
 #### 安装教程
 
